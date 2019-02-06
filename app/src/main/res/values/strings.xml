@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Jems</string>
     <string name="action_settings">Settings</string>
+    <string name="project_tracker">Project Tracker</string>
+    <string name="quick_estimate">Quick Estimate</string>
+
 </resources>
