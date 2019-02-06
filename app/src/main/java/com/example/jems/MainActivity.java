@@ -28,4 +28,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    /** Called when the user taps the quickEstimate button */
+    public void startCustomerTracker(View view)
+    {
+        Intent intent = new Intent(this, CustomerTrackerActivity.class);
+        startActivity(intent);
+
+    }
 }
