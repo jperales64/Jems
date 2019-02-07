@@ -36,4 +36,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void startExpenses(View view) {
+        Intent intent = new Intent(this, ExpensesActivity.class);
+        startActivity(intent);
+    }
+
+    public void startSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void startEmployeeTimesheet(View view) {
+        Intent intent = new Intent(this, EmployeeActivity.class);
+        startActivity(intent);
+    }
 }
