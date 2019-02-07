@@ -17,7 +17,7 @@
         android:layout_marginRight="10dp"
         android:onClick="startProjectTracker"
         android:text="@string/project_tracker"
-        app:layout_constraintBottom_toTopOf="@+id/button9"
+        app:layout_constraintBottom_toTopOf="@+id/EmployeeTimesheetButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/quickEstimatorButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,39 +31,41 @@
         android:layout_marginTop="10dp"
         android:onClick="startQuickEstimate"
         android:text="@string/quick_estimate"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintBottom_toTopOf="@+id/CustomerTrackerButton"
         app:layout_constraintEnd_toStartOf="@+id/ProjectTrackerButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/CustomerTrackerButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button10"
-        app:layout_constraintEnd_toStartOf="@+id/button9"
+        android:text="Customer Tracker"
+        android:onClick="startCustomerTracker"
+        app:layout_constraintBottom_toTopOf="@+id/ExpensesButton"
+        app:layout_constraintEnd_toStartOf="@+id/EmployeeTimesheetButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quickEstimatorButton" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/EmployeeTimesheetButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button11"
+        android:text="Employee Timesheet"
+        android:onClick="startEmployeeTimesheet"
+        app:layout_constraintBottom_toTopOf="@+id/SettingsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button8"
+        app:layout_constraintStart_toEndOf="@+id/CustomerTrackerButton"
         app:layout_constraintTop_toBottomOf="@+id/ProjectTrackerButton" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/ExpensesButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -71,22 +73,24 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Button"
+        android:text="Expenses"
+        android:onClick="startExpenses"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button11"
+        app:layout_constraintEnd_toStartOf="@+id/SettingsButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/CustomerTrackerButton" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/SettingsButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Button"
+        android:text="Settings"
+        android:onClick="startSettings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button10"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintStart_toEndOf="@+id/ExpensesButton"
+        app:layout_constraintTop_toBottomOf="@+id/EmployeeTimesheetButton" />
 </android.support.constraint.ConstraintLayout>
