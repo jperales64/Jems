@@ -28,9 +28,10 @@
     <string name="title_activity_expenses">ExpensesActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_employee">EmployeeActivity</string>
+    <string name="addButtonString">Add</string>
+    <string name="materialsAmountString">#</string>
     <string name="customer_tracker">Customer Tracker</string>
     <string name="employee_timesheet">Employee Timesheet</string>
-
     <string name="settings">Settings</string>
     <string name="actualCost">Cost:</string>
 
