@@ -49,7 +49,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
         public void bind(final WorkProject item, final OnItemClickListener listener) {
             custName.setText(item.getCustomerName());
-            jobInfo.setText(item.getCustomerAddress());
+            jobInfo.setText(item.getCustomerName());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);

@@ -10,17 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ProjectTracker extends Activity {
-    WorkProject project2 = new WorkProject(12.3, 4.3, "Al Bundy", "9764 Jeopardy Lane");
-    WorkProject project = new WorkProject(70.5, 14.1, "George Jetson", "2062 SkyPad Apts");
-    WorkProject project3 = new WorkProject(32.3, 42.3, "Nigel Thornberry", "300 Smashing Ln");
-    WorkProject project4 = new WorkProject(19.7, 25.6, "Jean-Luc Picard", "1701 Enterprise");
+    WorkProject project2 = new WorkProject();
     private ArrayList<WorkProject> projects = new ArrayList<WorkProject>();
 
-
+    private  WorkProject project = new WorkProject();
     private ProjectAdapter.OnItemClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        project2.setCustName("PIE");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_tracker);
         RecyclerView rvProjects = (RecyclerView) findViewById(R.id.projectTrackerRv);
@@ -35,8 +32,7 @@ public class ProjectTracker extends Activity {
 
         projects.add(project);
         projects.add(project2);
-        projects.add(project3);
-        projects.add(project4);
+        projects.add(project);
         ProjectAdapter projectAdapter = new ProjectAdapter(projects, listener);
         rvProjects.setAdapter(projectAdapter);
 

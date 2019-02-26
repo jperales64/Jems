@@ -34,13 +34,10 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         custAddress.setText(project.getCustomerAddress());
         displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);;
         projectCost.setText("$" + displayValue.toString());
-
         toDoListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProjectDisplayActivity.this, ToDoListActivity.class);
-                startActivity(intent);
-
+                startActivity(new Intent(ProjectDisplayActivity.this, ToDoList.class));
             }
         });
 
