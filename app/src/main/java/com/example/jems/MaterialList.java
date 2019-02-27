@@ -10,7 +10,7 @@ public class MaterialList {
         this.cost = this.calcCost();
     }
 
-    //for texsting
+    //for textsting
     public  MaterialList(){
         this.cost = 13.46f;
     }

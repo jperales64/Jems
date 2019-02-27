@@ -4,7 +4,7 @@ class Material {
     //Change to money api
     private Float cost;
 
-    public Material(Float cost){
+    public Material(String name, Float cost){
         this.cost = cost;
     }
 
