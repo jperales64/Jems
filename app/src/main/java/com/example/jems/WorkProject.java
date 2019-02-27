@@ -27,7 +27,7 @@ public class WorkProject implements Parcelable {
     /**
      * Constructor
      */
-    public WorkProject(double hours, double miles, String customerName){
+    public WorkProject(double hours, double miles, String customerName, String address){
 
         this.hours = hours;
         this.miles = miles;
@@ -36,6 +36,7 @@ public class WorkProject implements Parcelable {
 
         this.materials = materials;
         this.customerName = customerName;
+        this.customerAddress = address;
         this.actualCost = calcCost();
        this.netProfit = this.actualCost.subtract(new BigDecimal(this.materials.getCost()));
 
