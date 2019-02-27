@@ -13,8 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateNewToDoListActivityItem"></activity>
-        <activity android:name=".ToDoList" />
+        <activity android:name=".ToDoListActivity"></activity>
+
+        <activity android:name=".CreateNewToDoListActivityItem" />
+
         <activity android:name=".ProjectDisplayActivity" />
         <activity
             android:name=".EmployeeActivity"
