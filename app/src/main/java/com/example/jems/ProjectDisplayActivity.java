@@ -18,6 +18,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
     private TextView projectCost;
     private BigDecimal displayValue;
     private Button toDoListButton;
+    private Button employeeListButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,15 +30,27 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         custAddress = findViewById(R.id.workProjectCustAddress);
         projectCost = findViewById(R.id.projectCostTextView);
         toDoListButton = (Button)findViewById(R.id.toDoListButton);
+        employeeListButton = findViewById(R.id.EmployeesOnJobButton);
 
         custName.setText(project.getCustomerName());
         custAddress.setText(project.getCustomerAddress());
         displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);;
         projectCost.setText("$" + displayValue.toString());
+
         toDoListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProjectDisplayActivity.this, ToDoList.class));
+                Intent intent = new Intent(ProjectDisplayActivity.this, ToDoListActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        employeeListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProjectDisplayActivity.this, EmployeesOnProjectActivity.class);
+                startActivity(intent);
             }
         });
 
