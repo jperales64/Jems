@@ -11,6 +11,7 @@ import java.util.List;
 public class QuickEstimator extends AppCompatActivity {
 
     private ListView materialsListView;
+    //private Material()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
