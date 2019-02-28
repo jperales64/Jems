@@ -1,10 +1,11 @@
 package com.example.jems;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class MaterialList {
     ArrayList<Material> materials;
-    float cost;
+    BigDecimal cost;
     public MaterialList(ArrayList<Material> materials){
         this.materials = materials;
         this.cost = this.calcCost();
@@ -12,12 +13,12 @@ public class MaterialList {
 
     //for texsting
     public  MaterialList(){
-        this.cost = 13.46f;
+
     }
-    private float calcCost() {
-        float cost = 0;
+    private BigDecimal calcCost() {
+        BigDecimal cost = new BigDecimal(0);
         for (int i = 0; i < this.materials.size(); i++){
-            cost += this.materials.get(i).getCost();
+            cost.add(this.materials.get(i).getCost());
         }
         return cost;
     }
@@ -30,7 +31,7 @@ public class MaterialList {
         this.materials = materials;
     }
 
-    public float getCost() {
+    public BigDecimal getCost() {
         return cost;
     }
 

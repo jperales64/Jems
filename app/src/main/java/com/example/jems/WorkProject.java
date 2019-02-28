@@ -4,11 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class WorkProject implements Parcelable {
     String customerName;
     //List of employees working on projec
     String customerAddress;
+
+    //test stuff
+    Material wood = new Material("Wood", new BigDecimal(12.50));
+    ArrayList<Material> materials = new ArrayList<>();
+
+
+
+
+
 
 
     //Make sure to use Money api later for accurate money representation
@@ -21,7 +31,7 @@ public class WorkProject implements Parcelable {
     //LaborCost`
     BigDecimal laborCost = new BigDecimal(0.00);
     //List of materials --Maybe create a MaterialsList class that provides fuctions for calculating material actualCost
-    MaterialList materials = new MaterialList();
+    MaterialList materialsList;
     double miles;
     BigDecimal costPerMile = new BigDecimal("2.00");
     /**
@@ -31,14 +41,15 @@ public class WorkProject implements Parcelable {
 
         this.hours = hours;
         this.miles = miles;
-        //This should be changed to actual laborCost, or make laborCost a project wide constant
+        //This should be changed to actuall laborCost, or make laborCost a project wide constant
         this.laborCost = this.laborCost.add(new BigDecimal(15 * hours));
+        materials.add(wood);
+        this.materialsList = new MaterialList(materials);
 
-        this.materials = materials;
         this.customerName = customerName;
         this.customerAddress = address;
         this.actualCost = calcCost();
-       this.netProfit = this.actualCost.subtract(new BigDecimal(this.materials.getCost()));
+       this.netProfit = this.actualCost.subtract((this.materialsList.getCost()));
 
     }
 
@@ -58,7 +69,7 @@ public class WorkProject implements Parcelable {
     }
 
     private BigDecimal calcCost() {
-        BigDecimal cost = this.laborCost.add((new BigDecimal(this.materials.getCost())).add( costPerMile.multiply(new BigDecimal(miles))));
+        BigDecimal cost = this.laborCost.add(((this.materialsList.getCost())).add( costPerMile.multiply(new BigDecimal(miles))));
         return cost;
     }
 
@@ -128,11 +139,11 @@ public class WorkProject implements Parcelable {
     }
 
     public MaterialList getMaterials() {
-        return materials;
+        return materialsList;
     }
 
     public void setMaterials(MaterialList materials) {
-        this.materials = materials;
+        this.materialsList = materials;
     }
 
     public double getMiles() {

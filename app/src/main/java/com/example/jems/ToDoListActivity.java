@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class ToDoListActivity extends AppCompatActivity {
     ArrayList<String> toListStrings;
     ToDoListAdapter adapter;
     private Button addToDoIterm;
-    private TextView toDoString;
+    private EditText toDoString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class ToDoListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toListStrings.add(0, toDoString.getText().toString());
-                toDoString.clearComposingText();
+                toDoString.getText().clear();
                 adapter.notifyItemInserted(0);
             }
         });
