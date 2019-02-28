@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.jems.materials.MaterialType;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,11 @@ public class QuickEstimator extends AppCompatActivity {
 
         //Temporary List containing sample items.
         //TODO: create database interfacer to populate lists
+
+        Material fencePicket = new Material("1\" x 5-1/2\" x 6' Pressure Treated Pine Dog-Ear " +
+                "Fence Picket", MaterialType.Fencing.PICKET, new BigDecimal("1.8"));
+
+
         List<String> materialsArrayList = new ArrayList<String>();
         materialsArrayList.add("1\" x 5-1/2\" x 6' Pressure Treated Pine Dog-Ear Fence Picket\t380\t684.00");
         materialsArrayList.add("2\" x 4\" x 8' Pressure Treated Dimensional Lumber\t73\t$240.90");

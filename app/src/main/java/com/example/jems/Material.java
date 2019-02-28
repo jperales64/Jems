@@ -35,8 +35,8 @@ class Material {
 
     }
     @Override
-    public String toString(){
+    public String toString() {
         return name + "\t" + materialType.label() + "\t" + cost;
-
+    }
     
 }
