@@ -10,58 +10,63 @@
         android:id="@+id/estimatorTitleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/quick_estimate"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/projectCostLabel"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:text="@string/projectCostLabel"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/projectCostDisplayLabel"
+        app:layout_constraintTop_toBottomOf="@+id/selectProjectButton" />
+
+
 
     <Button
         android:id="@+id/selectProjectButton"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="28dp"
         android:text="@string/selectProjectString"
         app:layout_constraintEnd_toEndOf="@+id/estimatorTitleLabel"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/estimatorTitleLabel"
         app:layout_constraintTop_toBottomOf="@+id/estimatorTitleLabel" />
 
     <TextView
-        android:id="@+id/projectCostLabel"
-        android:layout_width="150dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/projectCostLabel"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectProjectButton" />
-
-
-    <TextView
         android:id="@+id/projectCostDisplayLabel"
-        android:layout_width="145dp"
-        android:layout_height="57dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="$4900.21"
-        android:textSize="24sp"
+        android:layout_width="175dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/projectCostLabel"
         app:layout_constraintTop_toBottomOf="@+id/selectProjectButton" />
-
 
     <TextView
         android:id="@+id/employeesNumLabel"
-        android:layout_width="150dp"
-        android:layout_height="59dp"
+        android:layout_width="159dp"
+        android:layout_height="52dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/employeesNumLabel"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,67 +74,63 @@
 
     <EditText
         android:id="@+id/employeesNumField"
-        android:layout_width="100dp"
-        android:layout_height="57dp"
+        android:layout_width="95dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:autofillHints=""
+        android:ems="10"
         android:hint="@string/employeesNumFieldString"
         android:inputType="number"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toEndOf="@+id/employeesNumLabel"
         app:layout_constraintTop_toBottomOf="@+id/projectCostDisplayLabel" />
 
     <TextView
         android:id="@+id/estimatedHrsLabel"
-        android:layout_width="150dp"
-        android:layout_height="59dp"
+        android:layout_width="153dp"
+        android:layout_height="58dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/estimatedTimeLabel"
+        android:text="@string/totalEstimatedCostString"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/employeesNumLabel" />
 
     <EditText
         android:id="@+id/estimatedHrsField"
-        android:layout_width="100dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="95dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:autofillHints=""
+        android:ems="10"
         android:hint="@string/estimatedTimeField"
         android:inputType="number"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/estimatedHrsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/employeesNumField" />
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toEndOf="@+id/employeesNumLabel"
+        app:layout_constraintTop_toBottomOf="@+id/projectCostDisplayLabel" />
 
     <TextView
         android:id="@+id/totalCostTitleLabel"
-        android:layout_width="175dp"
-        android:layout_height="59dp"
+        android:layout_width="254dp"
+        android:layout_height="87dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/totalCostString"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/estimatedHrsLabel" />
-
-    <TextView
-        android:id="@+id/totalCostDisplay"
-        android:layout_width="175dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="$5215.25"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalCostTitleLabel" />
-
 </android.support.constraint.ConstraintLayout>
