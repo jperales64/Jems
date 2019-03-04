@@ -62,7 +62,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+                app:layout_constraintTop_toBottomOf="@+id/materialListButton" />
 
             <Button
                 android:id="@+id/button2"
@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/materialListButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

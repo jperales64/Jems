@@ -32,19 +32,23 @@ public class WorkProject implements Parcelable {
     BigDecimal laborCost = new BigDecimal(0.00);
     //List of materials --Maybe create a MaterialsList class that provides fuctions for calculating material actualCost
     MaterialList materialsList;
+    MaterialListLineItem lineItem = new MaterialListLineItem(new Material("wood",new BigDecimal(12.50)), 12);
     double miles;
     BigDecimal costPerMile = new BigDecimal("2.00");
+
+
     /**
      * Constructor
      */
     public WorkProject(double hours, double miles, String customerName, String address){
-
+        ArrayList<MaterialListLineItem> lineItems = new ArrayList<>();
+        lineItems.add(lineItem);
         this.hours = hours;
         this.miles = miles;
         //This should be changed to actuall laborCost, or make laborCost a project wide constant
         this.laborCost = this.laborCost.add(new BigDecimal(15 * hours));
-        materials.add(wood);
-        this.materialsList = new MaterialList(materials);
+        //materials.add(wood);
+        this.materialsList = new MaterialList(lineItems);
 
         this.customerName = customerName;
         this.customerAddress = address;
