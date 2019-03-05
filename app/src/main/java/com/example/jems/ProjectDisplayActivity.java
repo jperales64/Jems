@@ -16,6 +16,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
     private TextView custName;
     private TextView custAddress;
     private TextView projectCost;
+    private TextView projectMiles;
     private BigDecimal displayValue;
     private Button toDoListButton;
     private Button employeeListButton;
@@ -33,11 +34,12 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         toDoListButton = (Button)findViewById(R.id.toDoListButton);
         employeeListButton = findViewById(R.id.EmployeesOnJobButton);
         materialListButton = findViewById(R.id.materialListButton);
-
+        projectMiles = findViewById(R.id.projectMilesEditText);
         custName.setText(project.getCustomerName());
         custAddress.setText(project.getCustomerAddress());
         displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);;
         projectCost.setText("$" + displayValue.toString());
+        projectMiles.setText(Double.toString(project.getMiles()));
 
         toDoListButton.setOnClickListener(new View.OnClickListener() {
             @Override
