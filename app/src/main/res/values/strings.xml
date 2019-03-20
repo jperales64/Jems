@@ -39,7 +39,8 @@
     <string name="employeesNumFieldString">#</string>
     <string name="estimatedTimeField">hrs</string>
     <string name="totalEstimatedCostString">Time Est. :</string>
-    <string name="totalCostString">Total Estimate :</string>
+    <string name="totalCostString">Total Estimate</string>
     <string name="estimatedTimeLabel">Est. Time:</string>
+    <string name="calculate">Calculate</string>
 
 </resources>
