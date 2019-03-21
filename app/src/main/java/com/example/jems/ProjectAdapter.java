@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,15 +11,17 @@ import java.util.List;
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
-        void onItemClick(WorkProject project);
+        void onItemClick(WorkProject project, Customer customer);
     }
 
     private final List<WorkProject> items;
     private final OnItemClickListener listener;
+    private WorkProjectDatabase wpdb;
 
-    public ProjectAdapter(List<WorkProject> items, OnItemClickListener listener) {
+    public ProjectAdapter(List<WorkProject> items, OnItemClickListener listener, WorkProjectDatabase wpdb) {
         this.items = items;
         this.listener = listener;
+        this.wpdb = wpdb;
     }
 
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,7 +30,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     }
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(items.get(position), listener);
+        Customer tempCust = (wpdb.customerDao().getCustbyId(items.get(position).getCustomerID()));
+        holder.bind(items.get(position), tempCust, listener);
+        TextView custName = holder.custName;
+
+        custName.setText(tempCust.getFirstName() + " " + tempCust.getLastName());
+        TextView custAddress = holder.jobInfo;
+        custAddress.setText(tempCust.getCustAddress());
     }
 
     @Override public int getItemCount() {
@@ -47,12 +54,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             jobInfo = (TextView) itemView.findViewById(R.id.projectInfoTextView);
         }
 
-        public void bind(final WorkProject item, final OnItemClickListener listener) {
-            custName.setText(item.getCustomerName());
-            jobInfo.setText(item.getCustomerAddress());
+        public void bind(final WorkProject item, final Customer customer, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    listener.onItemClick(item);
+                    listener.onItemClick(item, customer );
                 }
             });
         }

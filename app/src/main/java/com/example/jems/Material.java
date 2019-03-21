@@ -8,13 +8,13 @@ class Material {
     BigDecimal cost;     //Change to money api
     MaterialType materialType;
 
-    public Material(String name, MaterialType materialType, BigDecimal cost){
+    public Material(String name, MaterialType materialType, BigDecimal cost) {
         this.name = name;
         this.materialType = materialType;
         this.cost = cost;
     }
 
-    public Material(String name, BigDecimal cost){
+    public Material(String name, BigDecimal cost) {
         this.name = name;
         this.materialType = MaterialType.Misc.EMPTY;
         this.cost = cost;
@@ -30,13 +30,14 @@ class Material {
         this.cost = cost;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
 
     }
+
     @Override
     public String toString() {
         return name + "\t" + materialType.label() + "\t" + cost;
+
     }
-    
 }

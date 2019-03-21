@@ -1,86 +1,125 @@
 package com.example.jems;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+@Entity(tableName = "project")
 public class WorkProject implements Parcelable {
-    String customerName;
-    //List of employees working on projec
-    String customerAddress;
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    private int id;
+
+//    @ColumnInfo(name = "first_name")
+//    private String customerFirstName;
+//
+//    @ColumnInfo(name = "last_name")
+//    private String customerLastName;
+//
+//    @ColumnInfo(name = "customer_Address")
+//    private String customerAddress;
+    @ColumnInfo(name = "customer_id")
+    private int customerID;
+
+    @Ignore
+    private BigDecimal actualCost;
+
+    @Ignore
+    private BigDecimal displayCost = new BigDecimal("2.00");
+
+    @ColumnInfo(name = "project_cost")
+    private String displayCostStr;
+
+    //Hours worked by each employee
+    @Ignore
+    private double hoursWorkedOnProject;
+
+    @ColumnInfo(name = "hours")
+    private String hoursWorkedOnProjectStr;
+
+    //Just like actualCost make sure to use money
+    @Ignore
+    private BigDecimal netProfit = new BigDecimal("2.00");
+    @ColumnInfo(name = "profit")
+    private String netProfitStr;
+
+    //LaborCost
+    @Ignore
+    private BigDecimal laborCost = new BigDecimal(0.00);
+    @ColumnInfo(name = "labor_cost")
+    private String laborCostStr = laborCost.toString();
+    //List of materials --Maybe create a MaterialsList class that provides fuctions for calculating material actualCost
+    @Ignore
+    MaterialList materialsList = new MaterialList();
+
+    @Ignore
+    MaterialListLineItem lineItem = new MaterialListLineItem(new Material("wood", new BigDecimal(12.50)), 12);
+
+    @Ignore
+    double miles;
+    @ColumnInfo(name = "miles")
+    private String milesStr;
+
+    @Ignore
+    BigDecimal costPerMile = new BigDecimal("2.00");
 
     //test stuff
+    @Ignore
     Material wood = new Material("Wood", new BigDecimal(12.50));
+    @Ignore
     ArrayList<Material> materials = new ArrayList<>();
 
-
-
-
-
-
-
-    //Make sure to use Money api later for accurate money representation
-    BigDecimal actualCost;
-    BigDecimal displayCost;
-    //Hours worked by each employee
-    double hours;
-    //Just like actualCost make sure to use money
-    BigDecimal netProfit;
-    //LaborCost`
-    BigDecimal laborCost = new BigDecimal(0.00);
-    //List of materials --Maybe create a MaterialsList class that provides fuctions for calculating material actualCost
-    MaterialList materialsList;
-    double miles;
-    BigDecimal costPerMile = new BigDecimal("2.00");
     /**
      * Constructor
      */
-    public WorkProject(double hours, double miles, String customerName, String address){
-
-        this.hours = hours;
+    public WorkProject(double hoursWorkedOnProject, double miles, String customerFirstName, String customerLastName, String address) {
+        ArrayList<MaterialListLineItem> lineItems = new ArrayList<>();
+        lineItems.add(lineItem);
+        this.hoursWorkedOnProject = hoursWorkedOnProject;
+        this.hoursWorkedOnProjectStr = String.valueOf(hoursWorkedOnProject);
         this.miles = miles;
-        //This should be changed to actuall laborCost, or make laborCost a project wide constant
-        this.laborCost = this.laborCost.add(new BigDecimal(15 * hours));
+        this.milesStr = String.valueOf(miles);
+
+        this.laborCost = this.laborCost.add(new BigDecimal(15 * hoursWorkedOnProject));
+        this.laborCostStr = laborCost.toString();
         materials.add(wood);
-        this.materialsList = new MaterialList(materials);
-
-        this.customerName = customerName;
-        this.customerAddress = address;
+        this.materialsList = new MaterialList(lineItems);
         this.actualCost = calcCost();
-       this.netProfit = this.actualCost.subtract((this.materialsList.getCost()));
-
+        this.netProfit = this.actualCost.subtract((this.materialsList.getCost()));
+        this.netProfitStr = netProfit.toString();
     }
 
 
     /**
      * for make a work projecxt to test
-     *
      */
-    public WorkProject(){
+    public WorkProject() {
 
-        this.hours = 12;
+        this.hoursWorkedOnProject = 12;
         this.miles = 50;
-        this.customerName = "BOOOOOOM";
-        this.customerAddress = "123 Main St.";
+        this.customerID = 1;
         this.actualCost = calcCost();
 
     }
 
-    private BigDecimal calcCost() {
-        BigDecimal cost = this.laborCost.add(((this.materialsList.getCost())).add( costPerMile.multiply(new BigDecimal(miles))));
-        return cost;
+    public WorkProject(int custId){
+        this.customerID = custId;
     }
 
-    public WorkProject(Parcel in){
+    public WorkProject(Parcel in) {
 
 
-        this.hours = in.readDouble();
+        this.hoursWorkedOnProject = in.readDouble();
         this.miles = in.readDouble();
-        this.customerName = in.readString();
-        this.customerAddress = in.readString();
         this.actualCost = (BigDecimal) in.readSerializable();
+        this.customerID = in.readInt();
 
 
     }
@@ -98,13 +137,7 @@ public class WorkProject implements Parcelable {
     };
 
 
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
 
     public BigDecimal getActualCost() {
         return actualCost;
@@ -114,12 +147,12 @@ public class WorkProject implements Parcelable {
         this.actualCost = actualCost;
     }
 
-    public double getHours() {
-        return hours;
+    public double getHoursWorkedOnProject() {
+        return hoursWorkedOnProject;
     }
 
-    public void setHours(float hours) {
-        this.hours = hours;
+    public void setHoursWorkedOnProject(float hoursWorkedOnProject) {
+        this.hoursWorkedOnProject = hoursWorkedOnProject;
     }
 
     public BigDecimal getNetProfit() {
@@ -162,9 +195,6 @@ public class WorkProject implements Parcelable {
         this.costPerMile = costPerMile;
     }
 
-    public String getCustomerName(){
-        return customerName;
-    }
 
     @Override
     public int describeContents() {
@@ -175,22 +205,83 @@ public class WorkProject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
 
-        dest.writeDouble(hours);
+        dest.writeDouble(hoursWorkedOnProject);
 
         dest.writeDouble(miles);
 
-
-        dest.writeString(customerName);
-
-        dest.writeString(customerAddress);
-
         dest.writeSerializable(actualCost);
 
+        dest.writeInt(customerID);
+
     }
 
-    public void setCustName(String name) {
-        this.customerName = name;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDisplayCostStr(String filler) {
+        this.displayCostStr = this.displayCost.toString();
+    }
+
+    public String getDisplayCostStr() {
+        return this.displayCostStr;
+    }
+
+    public void setNetProfitStr(String filler) {
+        this.netProfitStr = this.netProfit.toString();
+    }
+
+    public String getNetProfitStr() {
+        return this.netProfitStr;
+    }
+
+    public void setLaborCostStr(String filler) {
+        this.laborCostStr = this.laborCost.toString();
+    }
+
+    public String getLaborCostStr() {
+        return this.laborCostStr;
+    }
+
+    public void setHoursWorkedOnProjectStr(String filler) {
+        this.hoursWorkedOnProjectStr = String.valueOf(hoursWorkedOnProject);
+    }
+
+    public String getHoursWorkedOnProjectStr() {
+        return this.hoursWorkedOnProjectStr;
+    }
+
+    public void setMilesStr(String filler) {
+        this.milesStr = String.valueOf(miles);
+    }
+
+    public String getMilesStr() {
+        return this.milesStr;
     }
 
 
+    private BigDecimal calcCost() {
+        BigDecimal labor = this.getLaborCost();
+
+        //BigDecimal matCost = this.getMaterials().getCost();
+        BigDecimal costPerMi = getCostPerMile();
+        BigDecimal milesBD = new BigDecimal(this.getMiles());
+        //BigDecimal cost = this.getLaborCost().add(((this.getMaterials().getCost())).add( getCostPerMile().multiply(new BigDecimal(this.getMiles()))));
+        BigDecimal cost = new BigDecimal(0.00);
+        cost.add(labor).add(costPerMi).add(milesBD);
+        return cost;
+    }
+
+    public int getCustomerID() {
+        return customerID;
+    }
+    public void setCustomerID(int id){
+        this.customerID = id;
+    }
 }
