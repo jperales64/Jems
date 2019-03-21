@@ -53,7 +53,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ProjectTracker" />
-        <activity android:name=".QuickEstimator" />
+        <activity android:name=".estimator.QuickEstimator" />
     </application>
 
 </manifest>

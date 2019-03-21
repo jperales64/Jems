@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.facebook.stetho.Stetho;
+import com.example.jems.estimator.QuickEstimator;
 
 public class MainActivity extends AppCompatActivity {
 

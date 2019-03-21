@@ -39,6 +39,5 @@ class Material {
     public String toString() {
         return name + "\t" + materialType.label() + "\t" + cost;
 
-
     }
 }
