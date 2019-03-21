@@ -27,6 +27,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_project_display);
         Intent i = getIntent();
         WorkProject project = i.getParcelableExtra("project");
+        Customer customer = i.getParcelableExtra("customer");
 
         custName = findViewById(R.id.workProjectCustNameTextView);
         custAddress = findViewById(R.id.workProjectCustAddress);
@@ -35,10 +36,14 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         employeeListButton = findViewById(R.id.EmployeesOnJobButton);
         materialListButton = findViewById(R.id.materialListButton);
         projectMiles = findViewById(R.id.projectMilesEditText);
-        custName.setText(project.getCustomerName());
-        custAddress.setText(project.getCustomerAddress());
-        displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);;
-        projectCost.setText("$" + displayValue.toString());
+
+        custName.setText(customer.getFirstName() + " " + customer.getLastName());
+        custAddress.setText(customer.getCustAddress());
+        if(project.getActualCost() != null) {
+            displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);
+            projectCost.setText("$" + displayValue.toString());
+
+        }
         projectMiles.setText(Double.toString(project.getMiles()));
 
         toDoListButton.setOnClickListener(new View.OnClickListener() {
@@ -66,5 +71,11 @@ public class ProjectDisplayActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ProjectDisplayActivity.this, ProjectTracker.class);
+        startActivity(i);
     }
 }

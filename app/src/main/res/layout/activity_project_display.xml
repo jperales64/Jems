@@ -115,9 +115,8 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="46dp"
                 android:layout_marginTop="10dp"
-                android:text="13.0"
                 android:textSize="36sp"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/projectCostTextView" />
@@ -151,7 +150,7 @@
                 android:layout_width="309dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="$1354.45"
+                android:text="$0.00"
                 android:textSize="36sp"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -181,6 +180,7 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:inputType="number"
+                android:text="0"
                 app:layout_constraintBottom_toTopOf="@+id/EmployeesOnJobButton"
                 app:layout_constraintEnd_toEndOf="parent" />
 
