@@ -26,7 +26,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_display);
         Intent i = getIntent();
-        WorkProject project = i.getParcelableExtra("project");
+        final WorkProject project = i.getParcelableExtra("project");
         Customer customer = i.getParcelableExtra("customer");
 
         custName = findViewById(R.id.workProjectCustNameTextView);
@@ -49,7 +49,10 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         toDoListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println(project.getId());
+                int projectId = project.getId();
                 Intent intent = new Intent(ProjectDisplayActivity.this, ToDoListActivity.class);
+                intent.putExtra("projectId",projectId);
                 startActivity(intent);
 
             }

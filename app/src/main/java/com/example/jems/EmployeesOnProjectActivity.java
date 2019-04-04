@@ -14,10 +14,6 @@ public class EmployeesOnProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employees_on_project);
         employees = new ArrayList<>();
-        employees.add(new Employee());
-        Employee temp = new Employee("Smeagal");
-        temp.updateHours(23);
-        employees.add(temp);
         RecyclerView rvEmployees = findViewById(R.id.employeesOnJob);
         rvEmployees.setHasFixedSize(true);
         EmployeesOnJobAdapter adapter = new EmployeesOnJobAdapter(employees);

@@ -1,28 +1,20 @@
 package com.example.jems.estimator;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.content.DialogInterface;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jems.R;
-import com.example.jems.materials.MaterialType;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class QuickEstimator extends AppCompatActivity {
     double projectCost = 0;

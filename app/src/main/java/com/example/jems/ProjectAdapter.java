@@ -18,6 +18,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     private final OnItemClickListener listener;
     private WorkProjectDatabase wpdb;
 
+
     public ProjectAdapter(List<WorkProject> items, OnItemClickListener listener, WorkProjectDatabase wpdb) {
         this.items = items;
         this.listener = listener;

@@ -1,12 +1,10 @@
 package com.example.jems;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,9 +35,9 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
 
         // Set item views based on your views and data model
         TextView nameTextView = viewHolder.employeeNameTextView;
-        nameTextView.setText(employee.getName());
+        nameTextView.setText(employee.getFirstName());
         TextView hoursTextView = viewHolder.hoursWorkedTextView;
-        hoursTextView.setText(Integer.toString(employee.getHours()));
+        hoursTextView.setText(Double.toString(employee.getHours()));
 
     }
 
