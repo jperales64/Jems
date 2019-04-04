@@ -37,6 +37,8 @@ public class ExisitngCustomerAdapter extends RecyclerView.Adapter<ExisitngCustom
 
         TextView custAddress = holder.custAddress;
         custAddress.setText(customer.getCustAddress());
+
+        holder.bind(customer, listener);
     }
 
 
@@ -55,7 +57,7 @@ public class ExisitngCustomerAdapter extends RecyclerView.Adapter<ExisitngCustom
             custAddress = itemView.findViewById(R.id.existingCustAddress);
         }
 
-        public void bind(final Customer customer, final OnItemClickListener listener) {
+        public void bind(final Customer customer,  final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(customer);
