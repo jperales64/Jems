@@ -5,11 +5,16 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.math.BigDecimal;
+
 @Entity(tableName = "employee")
-class Employee   {
+class Employee {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int employeeId;
+
+//    @ColumnInfo(name = "empId")
+//    int empId;
 
     @ColumnInfo(name = "employee_first_name")
     String firstName;
@@ -19,13 +24,18 @@ class Employee   {
 
     @ColumnInfo(name = "hours")
     double hours = 0;
-    public Employee(String firstName, String lastName){
+
+    public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     //test Constructor
-    public Employee(){
+    public Employee() {
+
+    }
+
+    public Employee(String firstName, String lastName, Double wage) {
 
     }
 

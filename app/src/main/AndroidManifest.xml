@@ -14,7 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExistingCustomerSelectionActivity"></activity>
+        <activity
+            android:name=".CreateNewEmployee"
+            android:label="@string/title_activity_create_new_employee"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EmployeeTimesheetDetailActivity"
+            android:label="@string/title_activity_employee_timesheet_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ExistingCustomerSelectionActivity" />
         <activity android:name=".UpdateJobActivity" />
         <activity android:name=".CreateNewCustomerActivity" />
         <activity android:name=".NewOrExistingCustomerActivity" />

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /** Called when the user taps the quickEstimate button */
+    /** Called when the user taps the projectTracker button */
     public void startProjectTracker(View view)
     {
         Intent intent = new Intent(this, ProjectTracker.class);
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /** Called when the user taps the employeeTimesheet button */
     public void startEmployeeTimesheet(View view) {
         Intent intent = new Intent(this, EmployeeActivity.class);
         startActivity(intent);
