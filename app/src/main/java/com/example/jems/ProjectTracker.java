@@ -1,7 +1,6 @@
 package com.example.jems;
 
 import android.app.Activity;
-import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,10 +44,11 @@ public class ProjectTracker extends Activity {
             }
         });
 
-        wpDb = Room.databaseBuilder(getApplicationContext(), WorkProjectDatabase.class, "work_project_db").allowMainThreadQueries().build();
+        wpDb = WorkProjectDatabase.getInstance(this);
 
 
         projects = wpDb.workProjectDao().getAll();
+
         ProjectAdapter projectAdapter = new ProjectAdapter(projects, listener, wpDb);
         rvProjects.setAdapter(projectAdapter);
 

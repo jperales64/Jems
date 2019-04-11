@@ -115,7 +115,7 @@ public class WorkProject implements Parcelable {
 
     public WorkProject(Parcel in) {
 
-
+        this.id = in.readInt();
         this.hoursWorkedOnProject = in.readDouble();
         this.miles = in.readDouble();
         this.actualCost = (BigDecimal) in.readSerializable();
@@ -204,6 +204,7 @@ public class WorkProject implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
+        dest.writeInt(id);
 
         dest.writeDouble(hoursWorkedOnProject);
 
