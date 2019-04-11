@@ -25,6 +25,13 @@ public class Customer implements Parcelable {
     @ColumnInfo(name = "tele")
     private String custTele;
 
+    public Customer(){
+        this.firstName = "";
+        this.lastName = "";
+        this.custAddress = "";
+        this.custTele = "";
+    }
+
     public Customer(String firstName, String lastName, String custAddress, String custTele){
         this.firstName = firstName;
         this.lastName = lastName;
