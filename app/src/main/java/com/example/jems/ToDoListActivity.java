@@ -24,6 +24,7 @@ public class ToDoListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_to_do_list);
         wpDb = WorkProjectDatabase.getInstance(this);
 
+
         Bundle extras = getIntent().getExtras();
         this.projectId = extras.getInt("projectId");
         RecyclerView rvToListItems = findViewById(R.id.rv_todo_list);
@@ -42,7 +43,7 @@ public class ToDoListActivity extends AppCompatActivity {
                 if(!(toDoString.getText().toString().isEmpty())) {
                     ToDoItem newToDoItem = new ToDoItem(toDoString.getText().toString(), ToDoListActivity.this.projectId);
                     toListStrings.add(0, newToDoItem);
-                    WorkProjectDatabase.getInstance(ToDoListActivity.this).toDoListDao().insert(newToDoItem);
+                    wpDb.toDoListDao().insert(newToDoItem);
                     toDoString.getText().clear();
                     adapter.notifyItemInserted(0);
                 }

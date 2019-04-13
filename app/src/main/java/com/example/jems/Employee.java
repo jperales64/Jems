@@ -2,11 +2,14 @@ package com.example.jems;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.math.BigDecimal;
+
 @Entity(tableName = "employee")
-class Employee   {
+public class Employee   {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int employeeId;
@@ -17,8 +20,16 @@ class Employee   {
     @ColumnInfo(name = "employee_last_name")
     String lastName;
 
-    @ColumnInfo(name = "hours")
-    double hours = 0;
+    @ColumnInfo(name = "wage")
+    String wageStr;
+    @Ignore
+    BigDecimal wage;
+
+    @ColumnInfo(name = "start_date")
+    //Store in yyyy-mm-dd
+    //Insert will take each as an argument and format it
+    String date;
+
     public Employee(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,15 +56,7 @@ class Employee   {
         this.lastName = lastName;
     }
 
-    public double getHours(){ return this.hours;}
 
-    public void updateHours(int additonalHoursWorked){
-        this.hours += additonalHoursWorked;
-    }
-
-    public void setHours(double hours){
-        this.hours = hours;
-    }
 
     public int getEmployeeId(){
         return this.employeeId;
@@ -63,3 +66,5 @@ class Employee   {
         this.employeeId = employeeId;
     }
 }
+
+
