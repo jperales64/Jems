@@ -5,10 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.example.jems.employee.Employee;
-import com.example.jems.employee.EmployeeDao;
-
-@Database(entities = {WorkProject.class, Customer.class, ToDoItem.class, Employee.class},  version = 8)
+@Database(entities = {WorkProject.class, Customer.class, ToDoItem.class, Employee.class},  version = 7)
 public abstract class WorkProjectDatabase extends RoomDatabase {
 
     public abstract WorkProjectDao workProjectDao();

@@ -42,5 +42,7 @@
     <string name="totalCostString">Total Estimate</string>
     <string name="estimatedTimeLabel">Est. Time:</string>
     <string name="calculate">Calculate</string>
+    <string name="generate_estimate">Generate Estimate</string>
+    <string name="add_new_project">Add New Project</string>
 
 </resources>

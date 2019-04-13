@@ -15,23 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity
-            android:name=".employee.CreateNewEmployee"
-            android:label="@string/title_activity_create_new_employee"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".employee.EmployeeTimesheetDetailActivity"
-            android:label="@string/title_activity_employee_timesheet_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ExistingCustomerSelectionActivity" />
-=======
         <activity android:name=".ExistingCustomerSelectionActivity"></activity>
->>>>>>> parent of f093197... add employee db
-=======
-        <activity android:name=".ExistingCustomerSelectionActivity"></activity>
->>>>>>> parent of f093197... add employee db
         <activity android:name=".UpdateJobActivity" />
         <activity android:name=".CreateNewCustomerActivity" />
         <activity android:name=".NewOrExistingCustomerActivity" />
@@ -41,7 +25,7 @@
         <activity android:name=".CreateNewToDoListActivityItem" />
         <activity android:name=".ProjectDisplayActivity" />
         <activity
-            android:name=".employee.EmployeeActivity"
+            android:name=".EmployeeActivity"
             android:label="@string/title_activity_employee"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
