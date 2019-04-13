@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity
             android:name=".employee.CreateNewEmployee"
             android:label="@string/title_activity_create_new_employee"
@@ -24,6 +25,9 @@
             android:label="@string/title_activity_employee_timesheet_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ExistingCustomerSelectionActivity" />
+=======
+        <activity android:name=".ExistingCustomerSelectionActivity"></activity>
+>>>>>>> parent of f093197... add employee db
         <activity android:name=".UpdateJobActivity" />
         <activity android:name=".CreateNewCustomerActivity" />
         <activity android:name=".NewOrExistingCustomerActivity" />
