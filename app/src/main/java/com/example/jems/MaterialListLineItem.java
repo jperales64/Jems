@@ -5,19 +5,18 @@ import java.math.BigDecimal;
 public class MaterialListLineItem {
     private Material material;
     private int qty;
-    private BigDecimal totalCost;
 
-    public MaterialListLineItem(Material material, int qty){
+    MaterialListLineItem(Material material, int qty){
         this.material = material;
         this.qty = qty;
-        this.totalCost = calcCost();
+        BigDecimal totalCost = calcCost();
     }
 
-    public BigDecimal getCostPerMateral(){
+    BigDecimal getCostPerMateral(){
         return material.getCost();
     }
 
-    public BigDecimal calcCost(){
+    BigDecimal calcCost(){
         return (getCostPerMateral().multiply(new BigDecimal(qty)));
     }
 
@@ -25,7 +24,7 @@ public class MaterialListLineItem {
         return material.getName();
     }
 
-    public int getQty(){
+    int getQty(){
         return this.qty;
     }
 }

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CreateNewCustomerActivity extends AppCompatActivity {
-    private Button addCustomerToDatabase;
+    Button addCustomerToDatabase;
     private WorkProjectDatabase wpdp;
     private EditText newCustFirstName;
     private EditText newCustLastName;

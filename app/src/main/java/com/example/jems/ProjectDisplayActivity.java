@@ -12,15 +12,8 @@ import java.math.RoundingMode;
 
 public class ProjectDisplayActivity extends AppCompatActivity {
 
-    private  WorkProject project;
-    private TextView custName;
-    private TextView custAddress;
-    private TextView projectCost;
-    private TextView projectMiles;
-    private BigDecimal displayValue;
-    private Button toDoListButton;
-    private Button employeeListButton;
-    private Button materialListButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +22,21 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         final WorkProject project = i.getParcelableExtra("project");
         Customer customer = i.getParcelableExtra("customer");
 
-        custName = findViewById(R.id.workProjectCustNameTextView);
-        custAddress = findViewById(R.id.workProjectCustAddress);
-        projectCost = findViewById(R.id.projectCostTextView);
-        toDoListButton = (Button)findViewById(R.id.toDoListButton);
-        employeeListButton = findViewById(R.id.EmployeesOnJobButton);
-        materialListButton = findViewById(R.id.materialListButton);
-        projectMiles = findViewById(R.id.projectMilesEditText);
+        TextView custName = findViewById(R.id.workProjectCustNameTextView);
+        TextView custAddress = findViewById(R.id.workProjectCustAddress);
+        TextView projectCost = findViewById(R.id.projectCostTextView);
+        Button toDoListButton = findViewById(R.id.toDoListButton);
+        Button employeeListButton = findViewById(R.id.EmployeesOnJobButton);
+        Button materialListButton = findViewById(R.id.materialListButton);
+        TextView projectMiles = findViewById(R.id.projectMilesEditText);
 
-        custName.setText(customer.getFirstName() + " " + customer.getLastName());
+        String custNameStr = customer.getFirstName() + " " + customer.getLastName();
+        custName.setText(custNameStr);
         custAddress.setText(customer.getCustAddress());
         if(project.getActualCost() != null) {
-            displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);
-            projectCost.setText("$" + displayValue.toString());
+            BigDecimal displayValue = project.getActualCost().setScale(2, RoundingMode.HALF_EVEN);
+            String moneyStr = "$" + displayValue.toString();
+            projectCost.setText(moneyStr);
 
         }
         projectMiles.setText(Double.toString(project.getMiles()));

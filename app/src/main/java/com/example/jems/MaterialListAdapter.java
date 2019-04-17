@@ -1,22 +1,22 @@
 package com.example.jems;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapter.ViewHolder> {
 
     private MaterialList materialList;
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView materialNameTextView;
-        public TextView materialQtyTextView;
-        public TextView materialPriceTextView;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView materialNameTextView;
+        TextView materialQtyTextView;
+        TextView materialPriceTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
@@ -27,10 +27,11 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
         }
     }
 
-    public MaterialListAdapter(MaterialList materialList) {
+    MaterialListAdapter(MaterialList materialList) {
         this.materialList = materialList;
     }
-    public MaterialListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public MaterialListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -38,11 +39,10 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
         View contactView = inflater.inflate(R.layout.view_materal_list_row, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
-    public void onBindViewHolder(MaterialListAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull MaterialListAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         MaterialListLineItem material = materialList.get(position);
 

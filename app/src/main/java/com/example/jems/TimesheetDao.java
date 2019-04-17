@@ -10,21 +10,20 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 @Dao
-public interface EmployeeDao {
-
+public interface TimesheetDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Employee employee);
+    void insert(EmployeeTimeSheet employeeTimeSheet);
 
     @Update
-    void update(Employee employee);
+    void update(EmployeeTimeSheet employeeTimeSheet);
 
     @Delete
-    void delete(Employee employee);
+    void delete(EmployeeTimeSheet employeeTimeSheet);
 
-    @Query("SELECT * FROM employee")
-    List<Employee> getAll();
+    @Query("SELECT * FROM timesheet")
+    List<EmployeeTimeSheet> getAll();
 
 
-    @Query("DELETE FROM employee")
+    @Query("DELETE FROM timesheet")
     void nukeTable();
 }
