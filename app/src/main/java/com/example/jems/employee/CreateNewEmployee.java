@@ -1,11 +1,14 @@
 package com.example.jems.employee;
 
 import android.content.DialogInterface;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +19,8 @@ import com.example.jems.AlertDialogFragment;
 import com.example.jems.R;
 import com.example.jems.WorkProjectDatabase;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 
 public class CreateNewEmployee extends AppCompatActivity {
 
