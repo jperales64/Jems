@@ -42,11 +42,8 @@
     <string name="totalCostString">Total Estimate</string>
     <string name="estimatedTimeLabel">Est. Time:</string>
     <string name="calculate">Calculate</string>
-    <string-array name="employees">
-        <item>Joseph Huebenthal</item>
-        <item>Isaiah Sanchez</item>
-        <item>Richard Lim</item>
-    </string-array>
+    <string name="generate_estimate">Generate Estimate</string>
+    <string name="add_new_project">Add New Project</string>
     <string name="addNewEmployee">Add New Employee</string>
     <string name="title_activity_employee_timesheet_detail">EmployeeTimesheetDetailActivity</string>
     <string name="title_activity_create_new_employee">CreateNewEmployee</string>

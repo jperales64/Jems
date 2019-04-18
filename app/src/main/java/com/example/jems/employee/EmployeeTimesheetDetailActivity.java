@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
+//import com.example.jems.Employee;
 import com.example.jems.R;
 import com.example.jems.WorkProjectDatabase;
 
@@ -20,6 +21,7 @@ public class EmployeeTimesheetDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_timesheet_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Timesheet Detail");
         setSupportActionBar(toolbar);
 
         name = findViewById(R.id.detailNameTextView);

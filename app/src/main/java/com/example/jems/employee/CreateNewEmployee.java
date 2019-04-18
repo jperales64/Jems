@@ -25,6 +25,7 @@ public class CreateNewEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_employee);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("New Employee");
         setSupportActionBar(toolbar);
 
         wpDb = WorkProjectDatabase.getInstance(this);
@@ -36,6 +37,10 @@ public class CreateNewEmployee extends AppCompatActivity {
         createNewEmpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (firstName.getText().equals(null))
+                {}
+
                 String first = firstName.getText().toString();
                 String last = lastName.getText().toString();
                 Double w = Double.parseDouble(wage.getText().toString());
