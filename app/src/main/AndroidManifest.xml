@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,15 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExistingCustomerSelectionActivity"></activity>
+        <activity android:name=".AddEmployeeToJobActivity"></activity>
+        <activity android:name=".ExistingCustomerSelectionActivity" />
         <activity android:name=".UpdateJobActivity" />
         <activity android:name=".CreateNewCustomerActivity" />
         <activity android:name=".NewOrExistingCustomerActivity" />
         <activity android:name=".MaterialListActivity" />
-        <activity android:name=".EmployeesOnProjectActivity" />
+        <activity android:name=".EmployeesOnProjectActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ProjectDisplayActivity"/>
         <activity android:name=".ToDoListActivity" />
         <activity android:name=".CreateNewToDoListActivityItem" />
-        <activity android:name=".ProjectDisplayActivity" />
+        <activity android:name=".ProjectDisplayActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".EmployeeActivity"
             android:label="@string/title_activity_employee"

@@ -18,7 +18,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_display);
-        Intent i = getIntent();
+        final Intent i = getIntent();
         final WorkProject project = i.getParcelableExtra("project");
         Customer customer = i.getParcelableExtra("customer");
 
@@ -57,6 +57,8 @@ public class ProjectDisplayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProjectDisplayActivity.this, EmployeesOnProjectActivity.class);
+                int projectId = project.getId();
+                intent.putExtra("projectId", projectId);
                 startActivity(intent);
             }
         });

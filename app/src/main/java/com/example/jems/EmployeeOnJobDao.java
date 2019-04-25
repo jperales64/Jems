@@ -10,24 +10,21 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 @Dao
-public interface EmployeeDao {
+public interface EmployeeOnJobDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Employee employee);
+    void insert(EmployeesOnJob employee);
 
     @Update
-    void update(Employee employee);
+    void update(EmployeesOnJob employee);
 
     @Delete
-    void delete(Employee employee);
+    void delete(EmployeesOnJob employee);
 
-    @Query("SELECT * FROM employee")
-    List<Employee> getAll();
+    @Query("SELECT * FROM employees_on_job where project_id = :projectId")
+    List<EmployeesOnJob> getAll(int projectId);
 
 
-    @Query("DELETE FROM employee")
+    @Query("DELETE FROM employees_on_job")
     void nukeTable();
-
-    @Query("SELECT * FROM employee WHERE employeeId = :employeeId")
-    Employee getEmployee(int employeeId);
 }

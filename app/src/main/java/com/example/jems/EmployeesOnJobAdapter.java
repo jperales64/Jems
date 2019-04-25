@@ -12,10 +12,13 @@ import java.util.List;
 
 public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAdapter.ViewHolder> {
 
-   private List<Employee> employees;
+   private List<EmployeesOnJob> employees;
+   WorkProjectDatabase wpdb;
 
-   EmployeesOnJobAdapter(List<Employee> employees){
+   EmployeesOnJobAdapter(List<EmployeesOnJob> employees, int projectId, Context context){
        this.employees = employees;
+       wpdb = WorkProjectDatabase.getInstance(context);
+       this.employees = wpdb.employeesOnJobDao().getAll(projectId);
    }
 
     @NonNull
@@ -32,11 +35,11 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
 
     public void onBindViewHolder(@NonNull EmployeesOnJobAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Employee employee = employees.get(position);
-
+        EmployeesOnJob employee = employees.get(position);
+        Employee theEmp = wpdb.employeeDao().getEmployee(employee.getEmployeeId());
         // Set item views based on your views and data model
         TextView nameTextView = viewHolder.employeeNameTextView;
-        nameTextView.setText(employee.getFirstName());
+        nameTextView.setText(theEmp.getFirstName());
         //TextView hoursTextView = viewHolder.hoursWorkedTextView;
 
     }
@@ -56,4 +59,6 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
             hoursWorkedTextView = itemView.findViewById(R.id.numOfHoursOnJobTextView);
         }
     }
+
+
 }

@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ *      Activity for creating a new customer and adding it to the database
+ */
 public class CreateNewCustomerActivity extends AppCompatActivity {
     Button addCustomerToDatabase;
     private WorkProjectDatabase wpdp;
