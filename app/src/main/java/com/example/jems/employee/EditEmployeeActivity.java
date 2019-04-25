@@ -51,8 +51,8 @@ public class EditEmployeeActivity extends AppCompatActivity {
         startDate = findViewById(R.id.startDateEditText);
 
         empId = e.getEmployeeId();
-        firstName.setText(e.getFirstName());
-        lastName.setText(e.getLastName());
+        firstName.setText(e.getFirstName().toString());
+        lastName.setText(e.getLastName().toString());
         wage.setText(Double.toString(e.getWage()));
 
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
@@ -64,7 +64,92 @@ public class EditEmployeeActivity extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateEmployee(view);
+
+                if (TextUtils.isEmpty(firstName.getText().toString())) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
+                    builder.setTitle(R.string.insert_first_name);
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(lastName.getText().toString())) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
+                    builder.setTitle(R.string.insert_last_name);
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(wage.getText().toString())) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
+                    builder.setTitle(R.string.insert_wage);
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(startDate.getText().toString())) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
+                    builder.setTitle(R.string.insert_date);
+                    builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    return;
+                }
+
+                String first = firstName.getText().toString();
+                String last = lastName.getText().toString();
+                Double w = Double.parseDouble(wage.getText().toString());
+
+                String sDate = startDate.getText().toString();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate date;
+                String[] dateArr = sDate.split("-");
+                if (dateArr[0].length() == 2) {
+                    String[] temp = new String[3];
+                    temp[0] = dateArr[2];
+                    temp[1] = dateArr[0];
+                    temp[2] = dateArr[1];
+                    sDate = String.join("-", temp);
+                }
+                date = LocalDate.parse(sDate, formatter);
+
+                e.setFirstName(first);
+                e.setLastName(last);
+                e.setWage(w);
+                e.setStartDate(date);
+
+                wpDb.employeeDao().update(e);
+
+                Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
+
+                intent.putExtra("com.example.jems.EMP_DETAIL_ACT", e);
+                startActivity(intent);
+
             }
         });
 
@@ -73,120 +158,27 @@ public class EditEmployeeActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteEmployee(view);
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
+                builder.setTitle("Are you sure?");
+                builder.setMessage("You are about to delete this employee. Data will be lost if employee is deleted.");
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        wpDb.employeeDao().delete(e);
+                        Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
-    }
-
-    public void updateEmployee(View view) {
-        if (TextUtils.isEmpty(firstName.getText().toString())) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
-            builder.setTitle(R.string.insert_first_name);
-            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    return;
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(lastName.getText().toString())) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
-            builder.setTitle(R.string.insert_last_name);
-            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    return;
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(wage.getText().toString())) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
-            builder.setTitle(R.string.insert_wage);
-            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    return;
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(startDate.getText().toString())) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
-            builder.setTitle(R.string.insert_date);
-            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    return;
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            return;
-        }
-
-        String first = firstName.getText().toString();
-        String last = lastName.getText().toString();
-        double w = Double.parseDouble(wage.getText().toString());
-
-        String sDate = startDate.getText().toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date;
-        String[] dateArr = sDate.split("-");
-        if (dateArr[0].length() == 2) {
-            String[] temp = new String[3];
-            temp[0] = dateArr[2];
-            temp[1] = dateArr[0];
-            temp[2] = dateArr[1];
-            sDate = String.join("-", temp);
-        }
-        date = LocalDate.parse(sDate, formatter);
-
-        e.setFirstName(first);
-        e.setLastName(last);
-        e.setWage(w);
-        e.setStartDate(date);
-
-        wpDb.employeeDao().update(e);
-
-        Intent intent = new Intent(getApplicationContext(), EmployeeTimesheetDetailActivity.class);
-
-        intent.putExtra("com.example.jems.EMP_DETAIL_ACT", e);
-        startActivity(intent);
-
-    }
-
-    public void deleteEmployee(View view) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditEmployeeActivity.this);
-        builder.setTitle("Are you sure?");
-        builder.setMessage("You are about to delete this employee. Data will be lost if employee is deleted.");
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                return;
-            }
-        });
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                wpDb.employeeDao().delete(e);
-                Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
-                startActivity(intent);
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
 
