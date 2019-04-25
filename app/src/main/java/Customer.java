@@ -1,8 +1,8 @@
 public class Customer {
-    String firstName;
-    String lastName;
-    String phoneNumber;
-    String address;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
 
     public Customer(String firstName, String lastName, String phoneNumber, String address){
         this.firstName = firstName;

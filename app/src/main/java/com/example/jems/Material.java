@@ -1,12 +1,14 @@
 package com.example.jems;
 
+import android.support.annotation.NonNull;
+
 import com.example.jems.materials.MaterialType;
 import java.math.BigDecimal;
 class Material {
 
-    String name;
-    BigDecimal cost;     //Change to money api
-    MaterialType materialType;
+    private String name;
+    private BigDecimal cost;     //Change to money api
+    private MaterialType materialType;
 
     public Material(String name, MaterialType materialType, BigDecimal cost) {
         this.name = name;
@@ -14,14 +16,14 @@ class Material {
         this.cost = cost;
     }
 
-    public Material(String name, BigDecimal cost) {
+     Material(String name, BigDecimal cost) {
         this.name = name;
         this.materialType = MaterialType.Misc.EMPTY;
         this.cost = cost;
         System.out.println(MaterialType.Siding.BRICK);
     }
 
-    public BigDecimal getCost() {
+     BigDecimal getCost() {
         return cost;
 
     }
@@ -35,6 +37,7 @@ class Material {
 
     }
 
+    @NonNull
     @Override
     public String toString() {
         return name + "\t" + materialType.label() + "\t" + cost;

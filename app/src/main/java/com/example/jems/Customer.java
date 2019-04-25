@@ -5,12 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+
 
 @Entity(tableName = "customer")
 public class Customer implements Parcelable {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     private int id;
 
     @ColumnInfo(name = "first_name")
@@ -63,31 +62,31 @@ public class Customer implements Parcelable {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+     String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+     void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getCustAddress() {
+     String getCustAddress() {
         return custAddress;
     }
 
-    public void setCustAddress(String custAddress) {
+     void setCustAddress(String custAddress) {
         this.custAddress = custAddress;
     }
 
-    public String getCustTele(){
+     String getCustTele(){
         return custTele;
     }
 
-    public void setCustTele(String tele){
+     void setCustTele(String tele){
         this.custTele = tele;
     }
 

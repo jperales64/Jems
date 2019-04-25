@@ -4,21 +4,21 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class MaterialList {
-    ArrayList<MaterialListLineItem> materials = new ArrayList<>();
-    BigDecimal cost;
-    public MaterialList(ArrayList<MaterialListLineItem> materials){
+   private ArrayList<MaterialListLineItem> materials = new ArrayList<>();
+    private BigDecimal cost;
+    MaterialList(ArrayList<MaterialListLineItem> materials){
         this.materials = materials;
         this.cost = this.calcCost();
     }
 
     //for textsting
-    public  MaterialList(){
+    MaterialList(){
 
     }
     private BigDecimal calcCost() {
         BigDecimal cost = new BigDecimal(0);
         for (int i = 0; i < this.materials.size(); i++){
-            cost.add(this.materials.get(i).calcCost());
+           cost = cost.add(this.materials.get(i).calcCost());
         }
         return cost;
     }
@@ -31,16 +31,16 @@ public class MaterialList {
         this.materials = materials;
     }
 
-    public BigDecimal getCost() {
+     BigDecimal getCost() {
         return cost;
     }
 
 
-    public MaterialListLineItem get(int position) {
+     MaterialListLineItem get(int position) {
         return materials.get(position);
     }
 
-    public int size() {
+     int size() {
         return materials.size();
     }
 

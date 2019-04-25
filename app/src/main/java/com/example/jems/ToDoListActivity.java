@@ -13,7 +13,6 @@ import java.util.List;
 public class ToDoListActivity extends AppCompatActivity {
     List<ToDoItem> toListStrings;
     ToDoListAdapter adapter;
-    private Button addToDoIterm;
     private EditText toDoString;
     WorkProjectDatabase wpDb;
     private int projectId;
@@ -25,6 +24,7 @@ public class ToDoListActivity extends AppCompatActivity {
         wpDb = WorkProjectDatabase.getInstance(this);
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         this.projectId = extras.getInt("projectId");
         RecyclerView rvToListItems = findViewById(R.id.rv_todo_list);
         rvToListItems.setHasFixedSize(true);
@@ -33,7 +33,7 @@ public class ToDoListActivity extends AppCompatActivity {
         rvToListItems.setAdapter(adapter);
         rvToListItems.setLayoutManager(new LinearLayoutManager(this));
         toDoString = findViewById(R.id.toDoString);
-        addToDoIterm = findViewById(R.id.addToDoItem);
+        Button addToDoIterm = findViewById(R.id.addToDoItem);
         addToDoIterm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
