@@ -24,11 +24,14 @@ public class ExistingCustomerSelectionActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(Customer customer) {
-                Intent intent = new Intent(ExistingCustomerSelectionActivity.this, ProjectDisplayActivity.class);
+
+                Intent intent = new Intent(ExistingCustomerSelectionActivity.this, ProjectTracker.class);
                 WorkProject temp = new WorkProject(customer.getId());
-                intent.putExtra("project", temp);
-                intent.putExtra("customer", customer);
                 wpDb.workProjectDao().insert(temp);
+               // System.out.println(temp.getId());
+                //intent.putExtra("project", temp);
+                //intent.putExtra("customer", customer);
+
                 startActivity(intent);
             }
         };

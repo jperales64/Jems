@@ -37,12 +37,12 @@ public class CreateNewCustomerActivity extends AppCompatActivity {
                 String tele = newCustTele.getText().toString();
                 Customer cust = new Customer(firstName,lastName,address,tele);
                 wpdp.customerDao().insert(cust);
-                Intent intent = new Intent(CreateNewCustomerActivity.this, ProjectDisplayActivity.class);
+                Intent intent = new Intent(CreateNewCustomerActivity.this, ProjectTracker.class);
                 cust = wpdp.customerDao().getCustbyName(cust.getFirstName(),cust.getLastName());
                 WorkProject project = new WorkProject(cust.getId());
 
-                intent.putExtra("project", project);
-                intent.putExtra("customer", cust);
+//                intent.putExtra("project", project);
+//                intent.putExtra("customer", cust);
                 wpdp.workProjectDao().insert(project);
                 startActivity(intent);
             }

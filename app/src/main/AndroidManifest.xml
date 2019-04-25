@@ -21,7 +21,6 @@
         <activity android:name=".NewOrExistingCustomerActivity" />
         <activity android:name=".MaterialListActivity" />
         <activity android:name=".EmployeesOnProjectActivity"
-            android:launchMode="singleTop"
             android:parentActivityName=".ProjectDisplayActivity"/>
         <activity android:name=".ToDoListActivity" />
         <activity android:name=".CreateNewToDoListActivityItem" />

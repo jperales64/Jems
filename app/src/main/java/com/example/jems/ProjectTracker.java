@@ -41,7 +41,7 @@ public class ProjectTracker extends Activity {
 
         wpDb = WorkProjectDatabase.getInstance(this);
 
-        wpDb.employeeDao().insert(new Employee());
+        //wpDb.employeeDao().insert(new Employee());
         List<WorkProject> projects = wpDb.workProjectDao().getAll();
 
         ProjectAdapter projectAdapter = new ProjectAdapter(projects, listener, wpDb);

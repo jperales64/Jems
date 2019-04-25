@@ -56,7 +56,7 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
         ViewHolder(View itemView){
             super(itemView);
             employeeNameTextView = itemView.findViewById(R.id.employeeName);
-            hoursWorkedTextView = itemView.findViewById(R.id.numOfHoursOnJobTextView);
+
         }
     }
 
