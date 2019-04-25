@@ -8,89 +8,97 @@
 
     <Button
         android:id="@+id/ProjectTrackerButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         android:onClick="startProjectTracker"
         android:text="@string/project_tracker"
-        app:layout_constraintBottom_toTopOf="@+id/EmployeeTimesheetButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/quickEstimatorButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/quickEstimatorButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         android:onClick="startQuickEstimate"
         android:text="@string/quick_estimate"
-        app:layout_constraintBottom_toTopOf="@+id/CustomerTrackerButton"
         app:layout_constraintEnd_toStartOf="@+id/ProjectTrackerButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/CustomerTrackerButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/customer_tracker"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         android:onClick="startCustomerTracker"
-        app:layout_constraintBottom_toTopOf="@+id/ExpensesButton"
+        android:text="@string/customer_tracker"
         app:layout_constraintEnd_toStartOf="@+id/EmployeeTimesheetButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quickEstimatorButton" />
 
     <Button
         android:id="@+id/EmployeeTimesheetButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="@string/employee_timesheet"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="4dp"
         android:onClick="startEmployeeTimesheet"
-        app:layout_constraintBottom_toTopOf="@+id/SettingsButton"
+        android:text="@string/employee_timesheet"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/CustomerTrackerButton"
-        app:layout_constraintTop_toBottomOf="@+id/ProjectTrackerButton" />
+        app:layout_constraintTop_toTopOf="@+id/CustomerTrackerButton" />
 
     <Button
         android:id="@+id/ExpensesButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/expenses"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:onClick="startExpenses"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/expenses"
         app:layout_constraintEnd_toStartOf="@+id/SettingsButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerTrackerButton" />
+        app:layout_constraintTop_toTopOf="@+id/SettingsButton" />
 
     <Button
         android:id="@+id/SettingsButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/settings"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         android:onClick="startSettings"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/settings"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ExpensesButton"
         app:layout_constraintTop_toBottomOf="@+id/EmployeeTimesheetButton" />
+
+    <Button
+        android:id="@+id/clockInOutBtn"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/design_default_color_primary_dark"
+        android:onClick="startClockInOut"
+        android:text="Clock In/Clock Out"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="587dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.jems.employee.ClockInOut;
 import com.example.jems.employee.EmployeeActivity;
 import com.facebook.stetho.Stetho;
 import com.example.jems.estimator.QuickEstimator;
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the employeeTimesheet button */
     public void startEmployeeTimesheet(View view) {
         Intent intent = new Intent(this, EmployeeActivity.class);
+        startActivity(intent);
+    }
+
+    public void startClockInOut(View view) {
+        Intent intent = new Intent(this, ClockInOut.class);
         startActivity(intent);
     }
 }
