@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.jems.MainActivity;
 import com.example.jems.R;
 import com.example.jems.WorkProjectDatabase;
 
@@ -49,7 +50,7 @@ public class EmployeeActivity extends AppCompatActivity {
                         new Intent(getApplicationContext(), EmployeeTimesheetDetailActivity.class);
 
                 Log.i("EmpAct", "Clicked");
-                showEmpTimeDetailActivity.putExtra("com.example.jems.EMP_NAME", (Employee) employeeList.getItemAtPosition(i));
+                showEmpTimeDetailActivity.putExtra("com.example.jems.EMP_DETAIL_ACT", (Employee) employeeList.getItemAtPosition(i));
 
 
                 startActivity(showEmpTimeDetailActivity);
@@ -66,4 +67,9 @@ public class EmployeeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
 }

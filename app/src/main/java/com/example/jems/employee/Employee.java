@@ -4,9 +4,20 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import com.example.jems.TimeStampConverter;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 @Entity(tableName = "employee")
 public class Employee implements Parcelable {
@@ -20,8 +31,9 @@ public class Employee implements Parcelable {
     @ColumnInfo(name = "employee_last_name")
     private String lastName;
 
-    @ColumnInfo(name = "hours")
-    double hours = 0;
+    @ColumnInfo(name = "start_date")
+    @TypeConverters({TimeStampConverter.class})
+    private LocalDate startDate;
 
     @ColumnInfo(name = "wage")
     private double wage;
@@ -38,12 +50,22 @@ public class Employee implements Parcelable {
         this.lastName = lastName;
         this.wage = wage;
     }
+    public Employee(String firstName, String lastName, LocalDate startDate, double wage) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.startDate = startDate;
+        this.wage = wage;
+    }
 
     public Employee(Parcel in){
         this.employeeId = in.readInt();
         this.firstName = in.readString();
         this.lastName = in.readString();
-        this.hours = in.readDouble();
+
+        String sDate = in.readString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.startDate = LocalDate.parse(sDate, formatter);
+
         this.wage = in.readDouble();
 
     }
@@ -76,16 +98,6 @@ public class Employee implements Parcelable {
         this.lastName = lastName;
     }
 
-    public double getHours(){ return this.hours;}
-
-    public void updateHours(int additonalHoursWorked){
-        this.hours += additonalHoursWorked;
-    }
-
-    public void setHours(double hours){
-        this.hours = hours;
-    }
-
     public int getEmployeeId(){
         return this.employeeId;
     }
@@ -100,6 +112,14 @@ public class Employee implements Parcelable {
         this.wage = wage;
     }
 
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -110,7 +130,11 @@ public class Employee implements Parcelable {
         dest.writeInt(employeeId);
         dest.writeString(firstName);
         dest.writeString(lastName);
-        dest.writeDouble(hours);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String sDate = startDate.format(formatter);
+        dest.writeString(sDate);
+
         dest.writeDouble(wage);
 
     }

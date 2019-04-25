@@ -39,7 +39,7 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
         TextView nameTextView = viewHolder.employeeNameTextView;
         nameTextView.setText(employee.getFirstName());
         TextView hoursTextView = viewHolder.hoursWorkedTextView;
-        hoursTextView.setText(Double.toString(employee.getHours()));
+//        hoursTextView.setText(Double.toString(employee.getHours()));
 
     }
 
