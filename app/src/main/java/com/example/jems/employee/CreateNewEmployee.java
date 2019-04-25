@@ -12,17 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.jems.AlertDialogFragment;
 import com.example.jems.R;
 import com.example.jems.WorkProjectDatabase;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 
 public class CreateNewEmployee extends AppCompatActivity {
 
