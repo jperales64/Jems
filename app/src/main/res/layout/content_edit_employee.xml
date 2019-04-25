@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".employee.EditEmployeeActivity"
+    tools:showIn="@layout/activity_edit_employee">
+
+    <Button
+        android:id="@+id/updateEmpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="90dp"
+        android:text="Update Employee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+<EditText
+    android:id="@+id/firstNameEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:ems="10"
+    android:hint="First Name"
+    android:inputType="textPersonName"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/lastNameEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:ems="10"
+    android:hint="Last Name"
+    android:inputType="textPersonName"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/firstNameEditText" />
+
+<EditText
+    android:id="@+id/wageEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:ems="10"
+    android:hint="Wage"
+    android:inputType="numberDecimal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lastNameEditText" />
+
+<EditText
+    android:id="@+id/startDateEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="32dp"
+    android:layout_marginEnd="8dp"
+    android:ems="10"
+    android:hint="Start Date (YYYY-MM-DD)"
+    android:inputType="date"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/wageEditText" />
+
+    <Button
+        android:id="@+id/deleteEmpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Delete Employee"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/updateEmpBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startDateEditText" />
+
+</android.support.constraint.ConstraintLayout>

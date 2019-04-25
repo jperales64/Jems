@@ -14,10 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".employee.ClockInOut"></activity>
         <activity
             android:name=".employee.EditEmployeeActivity"
             android:label="@string/title_activity_edit_employee"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".employee.CreateNewEmployee"
             android:label="@string/title_activity_create_new_employee"
