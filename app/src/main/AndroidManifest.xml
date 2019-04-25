@@ -20,6 +20,10 @@
             android:label="@string/title_activity_edit_employee"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".employee.EditEmployeeActivity"
+            android:label="@string/title_activity_edit_employee"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".employee.CreateNewEmployee"
             android:label="@string/title_activity_create_new_employee"
             android:theme="@style/AppTheme.NoActionBar" />

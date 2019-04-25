@@ -1,21 +1,17 @@
 package com.example.jems.employee;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.jems.AlertDialogFragment;
 import com.example.jems.R;
 import com.example.jems.WorkProjectDatabase;
 
