@@ -35,7 +35,7 @@ public class CreateNewEmployee extends AppCompatActivity {
         toolbar.setTitle("New Employee");
         setSupportActionBar(toolbar);
 
-        wpDb = WorkProjectDatabase.getInstance(this);
+        wpDb = WorkProjectDatabase.getInstance(this);_
         firstName = findViewById(R.id.firstNameEditText);
         lastName = findViewById(R.id.lastNameEditText);
         wage = findViewById(R.id.wageEditText);
