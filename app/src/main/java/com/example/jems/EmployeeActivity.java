@@ -1,4 +1,4 @@
-package com.example.jems.employee;
+package com.example.jems;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-
-import com.example.jems.MainActivity;
-import com.example.jems.R;
-import com.example.jems.WorkProjectDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +25,6 @@ public class EmployeeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
-//        Intent i = getIntent();
-//        Employee e = i.getParcelableExtra("com.example.jems.NEW_EMP");
 
         addNewEmployee = (Button) findViewById(R.id.addNewEmployeeBtn);
 
@@ -39,20 +33,19 @@ public class EmployeeActivity extends AppCompatActivity {
         employees = wpDb.employeeDao().getAll();
 
 
-        EmployeeTimesheetAdapter empTimeAdapter = new EmployeeTimesheetAdapter(this, employees);
+        EmployeeTimeSheetAdapter empTimeAdapter = new EmployeeTimeSheetAdapter(this, employees);
         employeeList.setAdapter(empTimeAdapter);
 
         //opens detailed timesheet of clicked employee
         employeeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 Intent showEmpTimeDetailActivity =
-                        new Intent(getApplicationContext(), EmployeeTimesheetDetailActivity.class);
+                        new Intent(getApplicationContext(), EmployeeDetailActivity.class);
 
                 Log.i("EmpAct", "Clicked");
                 showEmpTimeDetailActivity.putExtra("com.example.jems.EMP_DETAIL_ACT", (Employee) employeeList.getItemAtPosition(i));
-
-
                 startActivity(showEmpTimeDetailActivity);
             }
         });

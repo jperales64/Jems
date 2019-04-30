@@ -8,24 +8,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectTracker extends Activity {
 
-    private List<WorkProject> projects = new ArrayList<WorkProject>();
-    private Button addNewProjectButton;
     WorkProjectDatabase wpDb;
-
-    private ProjectAdapter.OnItemClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_tracker);
-        RecyclerView rvProjects = (RecyclerView) findViewById(R.id.projectTrackerRv);
-        listener = new ProjectAdapter.OnItemClickListener() {
+        RecyclerView rvProjects = findViewById(R.id.projectTrackerRv);
+        ProjectAdapter.OnItemClickListener listener = new ProjectAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(WorkProject project, Customer customer) {
                 Intent intent = new Intent(ProjectTracker.this, ProjectDisplayActivity.class);
@@ -34,7 +29,7 @@ public class ProjectTracker extends Activity {
                 startActivity(intent);
             }
         };
-        addNewProjectButton = findViewById(R.id.createNewProjectButton);
+        Button addNewProjectButton = findViewById(R.id.createNewProjectButton);
         addNewProjectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +41,8 @@ public class ProjectTracker extends Activity {
 
         wpDb = WorkProjectDatabase.getInstance(this);
 
-
-        projects = wpDb.workProjectDao().getAll();
+//        wpDb.employeeDao().insert(new Employee());
+        List<WorkProject> projects = wpDb.workProjectDao().getAll();
 
         ProjectAdapter projectAdapter = new ProjectAdapter(projects, listener, wpDb);
         rvProjects.setAdapter(projectAdapter);
@@ -62,12 +57,5 @@ public class ProjectTracker extends Activity {
         Intent i = new Intent(ProjectTracker.this, MainActivity.class);
         startActivity(i);
     }
-//    final Migration MIGRATION_1_2 =
-//            new Migration(1, 2) {
-//                @Override
-//                public void migrate(@NonNull final SupportSQLiteDatabase database) {
-//                    database.execSQL("CREATE TABLE IF NOT EXISTS `customer` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `first_name` TEXT, `last_name` TEXT, `address` TEXT)");
-//                }
-//            };
 
 }

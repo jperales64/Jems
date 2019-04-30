@@ -78,13 +78,13 @@
         app:layout_constraintTop_toBottomOf="@+id/EmployeeTimesheetButton" />
 
     <Button
-        android:id="@+id/clockInOutBtn"
+        android:id="@+id/mainClockInOutBtn"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="60dp"
-        android:background="@color/design_default_color_primary_dark"
+        android:background="@android:color/darker_gray"
         android:onClick="startClockInOut"
         android:text="Clock In/Clock Out"
         android:textColor="@android:color/white"

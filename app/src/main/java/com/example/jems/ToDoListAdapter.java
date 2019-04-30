@@ -1,6 +1,7 @@
 package com.example.jems;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +15,12 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
 
     private List<ToDoItem> toDoStrings;
 
-    public ToDoListAdapter(List<ToDoItem> toDoStrings){
+    ToDoListAdapter(List<ToDoItem> toDoStrings){
         this.toDoStrings = toDoStrings;
     }
 
-    public ToDoListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public ToDoListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -26,11 +28,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
         View contactView = inflater.inflate(R.layout.view_todo_list_row, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
-    public void onBindViewHolder(ToDoListAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull ToDoListAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         ToDoItem  toDoString = toDoStrings.get(position);
 
@@ -45,11 +46,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView toDoItem;
-        public CheckBox toDoCompletChBox;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView toDoItem;
+        CheckBox toDoCompletChBox;
 
-        public ViewHolder(View itemView){
+        ViewHolder(View itemView){
             super(itemView);
 
             toDoItem = itemView.findViewById(R.id.toDoItem);

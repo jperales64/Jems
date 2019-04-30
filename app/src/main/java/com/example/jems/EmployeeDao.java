@@ -1,4 +1,4 @@
-package com.example.jems.employee;
+package com.example.jems;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -27,6 +27,9 @@ public interface EmployeeDao {
 
     @Query("DELETE FROM employee")
     void nukeTable();
+
+    @Query("SELECT * FROM employee WHERE employeeId = :employeeId")
+    Employee getEmployee(int employeeId);
 
     @Query("SELECT * FROM employee WHERE employeeId IN(:empId)")
     Employee getEmpById(int empId);

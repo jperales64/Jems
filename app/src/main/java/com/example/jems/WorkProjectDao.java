@@ -28,4 +28,7 @@ public interface WorkProjectDao {
     @Query("DELETE FROM project")
      void nukeTable();
 
+    @Query("SELECT * FROM project WHERE id IN(:projId)")
+    WorkProject getProjById(int projId);
+
 }

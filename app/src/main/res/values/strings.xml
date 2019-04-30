@@ -51,7 +51,7 @@
     <string name="insert_first_name">Please insert the FIRST NAME</string>
     <string name="insert_last_name">Please insert the LAST NAME</string>
     <string name="insert_wage">Please insert the WAGE</string>
-    <string name="insert_date">Please insert START DATE in YYYY-MM-DD format</string>
+    <string name="insert_date">Please insert START DATE</string>
     <string name="invalid_entry">INVALID ENTRY</string>
     <string name="title_activity_edit_employee">EditEmployeeActivity</string>
     <string name="customer_tracker">Customer Tracker</string>

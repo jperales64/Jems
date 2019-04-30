@@ -1,25 +1,28 @@
 package com.example.jems;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jems.employee.Employee;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAdapter.ViewHolder> {
 
-   private ArrayList<Employee> employees;
+   private List<EmployeesOnJob> employees;
+   WorkProjectDatabase wpdb;
 
-   public EmployeesOnJobAdapter(ArrayList<Employee> employees){
+   EmployeesOnJobAdapter(List<EmployeesOnJob> employees, int projectId, Context context){
        this.employees = employees;
+       wpdb = WorkProjectDatabase.getInstance(context);
+       this.employees = wpdb.employeesOnJobDao().getAll(projectId);
    }
 
-    public EmployeesOnJobAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public EmployeesOnJobAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -27,19 +30,17 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
         View contactView = inflater.inflate(R.layout.view_employee_row, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
-    public void onBindViewHolder(EmployeesOnJobAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull EmployeesOnJobAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Employee employee = employees.get(position);
-
+        EmployeesOnJob employee = employees.get(position);
+        Employee theEmp = wpdb.employeeDao().getEmployee(employee.getEmployeeId());
         // Set item views based on your views and data model
         TextView nameTextView = viewHolder.employeeNameTextView;
-        nameTextView.setText(employee.getFirstName());
-        TextView hoursTextView = viewHolder.hoursWorkedTextView;
-//        hoursTextView.setText(Double.toString(employee.getHours()));
+        nameTextView.setText(theEmp.getFirstName());
+        //TextView hoursTextView = viewHolder.hoursWorkedTextView;
 
     }
 
@@ -48,14 +49,16 @@ public class EmployeesOnJobAdapter extends RecyclerView.Adapter<EmployeesOnJobAd
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView employeeNameTextView;
-        public TextView hoursWorkedTextView;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView employeeNameTextView;
+        TextView hoursWorkedTextView;
 
-        public ViewHolder(View itemView){
+        ViewHolder(View itemView){
             super(itemView);
             employeeNameTextView = itemView.findViewById(R.id.employeeName);
             hoursWorkedTextView = itemView.findViewById(R.id.numOfHoursOnJobTextView);
         }
     }
+
+
 }

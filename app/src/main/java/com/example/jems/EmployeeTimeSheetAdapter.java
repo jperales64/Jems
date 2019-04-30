@@ -1,4 +1,4 @@
-package com.example.jems.employee;
+package com.example.jems;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.jems.Employee;
 import com.example.jems.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeTimesheetAdapter extends BaseAdapter {
+public class EmployeeTimeSheetAdapter extends BaseAdapter {
 
     List<Employee> employees = new ArrayList<>();
     LayoutInflater mInflater;
 
-    public EmployeeTimesheetAdapter(Context c, List<Employee> emp) {
+    public EmployeeTimeSheetAdapter(Context c, List<Employee> emp) {
         employees = emp;
         mInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

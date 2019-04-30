@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".employee.EmployeeTimesheetDetailActivity"
+    tools:context=".EmployeeDetailActivity"
     tools:showIn="@layout/activity_employee_timesheet_detail">
 
     <TextView

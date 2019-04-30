@@ -1,4 +1,4 @@
-package com.example.jems.employee;
+package com.example.jems;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -9,14 +9,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import com.example.jems.TimeStampConverter;
-
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 @Entity(tableName = "employee")
@@ -33,7 +26,7 @@ public class Employee implements Parcelable {
 
     @ColumnInfo(name = "start_date")
     @TypeConverters({TimeStampConverter.class})
-    private LocalDate startDate;
+    private String startDate;
 
     @ColumnInfo(name = "wage")
     private double wage;
@@ -50,7 +43,7 @@ public class Employee implements Parcelable {
         this.lastName = lastName;
         this.wage = wage;
     }
-    public Employee(String firstName, String lastName, LocalDate startDate, double wage) {
+    public Employee(String firstName, String lastName, String startDate, double wage) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.startDate = startDate;
@@ -61,10 +54,11 @@ public class Employee implements Parcelable {
         this.employeeId = in.readInt();
         this.firstName = in.readString();
         this.lastName = in.readString();
+        this.startDate = in.readString();
 
-        String sDate = in.readString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.startDate = LocalDate.parse(sDate, formatter);
+//        String sDate = in.readString();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        this.startDate = LocalDate.parse(sDate, formatter);
 
         this.wage = in.readDouble();
 
@@ -112,11 +106,11 @@ public class Employee implements Parcelable {
         this.wage = wage;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
@@ -131,13 +125,12 @@ public class Employee implements Parcelable {
         dest.writeString(firstName);
         dest.writeString(lastName);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String sDate = startDate.format(formatter);
-        dest.writeString(sDate);
+        dest.writeString(startDate);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        String sDate = startDate.format(formatter);
+//        dest.writeString(sDate);
 
         dest.writeDouble(wage);
 
     }
-
-
 }

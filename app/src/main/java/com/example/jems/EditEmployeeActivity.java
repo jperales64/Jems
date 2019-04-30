@@ -1,27 +1,23 @@
-package com.example.jems.employee;
+package com.example.jems;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
-
-import com.example.jems.CreateNewCustomerActivity;
-import com.example.jems.R;
-import com.example.jems.WorkProjectDatabase;
-
-import org.w3c.dom.Text;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class EditEmployeeActivity extends AppCompatActivity {
     private Employee e;
@@ -34,6 +30,7 @@ public class EditEmployeeActivity extends AppCompatActivity {
     private Button deleteBtn;
     private WorkProjectDatabase wpDb;
 
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +52,36 @@ public class EditEmployeeActivity extends AppCompatActivity {
         lastName.setText(e.getLastName());
         wage.setText(Double.toString(e.getWage()));
 
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        final String sDate = e.getStartDate().format(formatter);
-        startDate.setText(sDate);
+        startDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Calendar cal = Calendar.getInstance();
+//                int year = cal.get(Calendar.YEAR);
+//                int month = cal.get(Calendar.MONTH);
+//                int day = cal.get(Calendar.DAY_OF_MONTH);
+                String[] date = e.getStartDate().split("/");
+                int month = Integer.parseInt(date[0]);
+                int day = Integer.parseInt(date[1]);
+                int year = Integer.parseInt(date[2]);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EditEmployeeActivity.this,
+                        android.R.style.Theme_Holo_Light,
+                        mDateSetListener,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                month += 1;
+                String date = month + "/" + day + "/" + year;
+                startDate.setText(date);
+            }
+        };
 
         // UPDATE EMPLOYEE BTN CLICKED
         updateBtn = findViewById(R.id.updateEmpBtn);
@@ -138,28 +162,29 @@ public class EditEmployeeActivity extends AppCompatActivity {
         String first = firstName.getText().toString();
         String last = lastName.getText().toString();
         double w = Double.parseDouble(wage.getText().toString());
-
         String sDate = startDate.getText().toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date;
-        String[] dateArr = sDate.split("-");
-        if (dateArr[0].length() == 2) {
-            String[] temp = new String[3];
-            temp[0] = dateArr[2];
-            temp[1] = dateArr[0];
-            temp[2] = dateArr[1];
-            sDate = String.join("-", temp);
-        }
-        date = LocalDate.parse(sDate, formatter);
+
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        LocalDate date;
+//        String[] dateArr = sDate.split("-");
+//        if (dateArr[0].length() == 2) {
+//            String[] temp = new String[3];
+//            temp[0] = dateArr[2];
+//            temp[1] = dateArr[0];
+//            temp[2] = dateArr[1];
+//            sDate = String.join("-", temp);
+//        }
+//        date = LocalDate.parse(sDate, formatter);
 
         e.setFirstName(first);
         e.setLastName(last);
         e.setWage(w);
-        e.setStartDate(date);
+        e.setStartDate(sDate);
+
+//        wpDb.employeeDao().update(e);
 
         wpDb.employeeDao().update(e);
-
-        Intent intent = new Intent(getApplicationContext(), EmployeeTimesheetDetailActivity.class);
+        Intent intent = new Intent(getApplicationContext(), EmployeeDetailActivity.class);
 
         intent.putExtra("com.example.jems.EMP_DETAIL_ACT", e);
         startActivity(intent);
@@ -192,7 +217,7 @@ public class EditEmployeeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), EmployeeTimesheetDetailActivity.class);
+        Intent i = new Intent(getApplicationContext(), EmployeeDetailActivity.class);
         i.putExtra("com.example.jems.EMP_DETAIL_ACT", e);
         startActivity(i);
     }

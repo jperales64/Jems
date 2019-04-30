@@ -8,14 +8,12 @@ import android.widget.Button;
 
 public class NewOrExistingCustomerActivity extends AppCompatActivity {
 
-    private Button createNewCustomerButton;
-    private Button selectExistingCustomerButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_or_existing_customer);
-        createNewCustomerButton = findViewById(R.id.newCustomerButton);
-        selectExistingCustomerButton = findViewById(R.id.existingCustomerButton);
+        Button createNewCustomerButton = findViewById(R.id.newCustomerButton);
+        Button selectExistingCustomerButton = findViewById(R.id.existingCustomerButton);
         createNewCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

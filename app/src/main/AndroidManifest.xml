@@ -14,22 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".employee.ClockInOut"></activity>
-        <activity android:name=".employee.ClockInOut"></activity>
+        <activity android:name=".TimeClockDetailActivity"></activity>
+        <activity android:name=".SelectProject" />
+        <activity android:name=".CreateProjectName" />
+        <activity android:name=".AddEmployeeToJobActivity" />
+        <activity android:name=".ClockInOut" />
         <activity
-            android:name=".employee.EditEmployeeActivity"
+            android:name=".EmployeeActivity"
+            android:label="@string/title_activity_employee"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditEmployeeActivity"
             android:label="@string/title_activity_edit_employee"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".employee.EditEmployeeActivity"
-            android:label="@string/title_activity_edit_employee"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".employee.CreateNewEmployee"
+            android:name=".CreateNewEmployee"
             android:label="@string/title_activity_create_new_employee"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".employee.EmployeeTimesheetDetailActivity"
+            android:name=".EmployeeDetailActivity"
             android:label="@string/title_activity_employee_timesheet_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ExistingCustomerSelectionActivity" />
@@ -37,14 +40,15 @@
         <activity android:name=".CreateNewCustomerActivity" />
         <activity android:name=".NewOrExistingCustomerActivity" />
         <activity android:name=".MaterialListActivity" />
-        <activity android:name=".EmployeesOnProjectActivity" />
+        <activity
+            android:name=".EmployeesOnProjectActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ProjectDisplayActivity" />
         <activity android:name=".ToDoListActivity" />
         <activity android:name=".CreateNewToDoListActivityItem" />
-        <activity android:name=".ProjectDisplayActivity" />
         <activity
-            android:name=".employee.EmployeeActivity"
-            android:label="@string/title_activity_employee"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ProjectDisplayActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"

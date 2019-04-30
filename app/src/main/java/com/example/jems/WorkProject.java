@@ -6,7 +6,6 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,8 +13,11 @@ import java.util.ArrayList;
 @Entity(tableName = "project")
 public class WorkProject implements Parcelable {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
+
     private int id;
+
+    @ColumnInfo(name = "project_name")
+    private String projectName;
 
 //    @ColumnInfo(name = "first_name")
 //    private String customerFirstName;
@@ -57,23 +59,29 @@ public class WorkProject implements Parcelable {
     private String laborCostStr = laborCost.toString();
     //List of materials --Maybe create a MaterialsList class that provides fuctions for calculating material actualCost
     @Ignore
+    private
     MaterialList materialsList = new MaterialList();
 
     @Ignore
+    private
     MaterialListLineItem lineItem = new MaterialListLineItem(new Material("wood", new BigDecimal(12.50)), 12);
 
     @Ignore
+    private
     double miles;
     @ColumnInfo(name = "miles")
     private String milesStr;
 
     @Ignore
+    private
     BigDecimal costPerMile = new BigDecimal("2.00");
 
     //test stuff
     @Ignore
+    private
     Material wood = new Material("Wood", new BigDecimal(12.50));
     @Ignore
+    private
     ArrayList<Material> materials = new ArrayList<>();
 
     /**
@@ -116,6 +124,7 @@ public class WorkProject implements Parcelable {
     public WorkProject(Parcel in) {
 
         this.id = in.readInt();
+        this.projectName = in.readString();
         this.hoursWorkedOnProject = in.readDouble();
         this.miles = in.readDouble();
         this.actualCost = (BigDecimal) in.readSerializable();
@@ -139,7 +148,7 @@ public class WorkProject implements Parcelable {
 
 
 
-    public BigDecimal getActualCost() {
+    BigDecimal getActualCost() {
         return actualCost;
     }
 
@@ -163,7 +172,7 @@ public class WorkProject implements Parcelable {
         this.netProfit = netProfit;
     }
 
-    public BigDecimal getLaborCost() {
+    private BigDecimal getLaborCost() {
         return laborCost;
     }
 
@@ -179,7 +188,7 @@ public class WorkProject implements Parcelable {
         this.materialsList = materials;
     }
 
-    public double getMiles() {
+    double getMiles() {
         return miles;
     }
 
@@ -187,7 +196,7 @@ public class WorkProject implements Parcelable {
         this.miles = miles;
     }
 
-    public BigDecimal getCostPerMile() {
+    private BigDecimal getCostPerMile() {
         return costPerMile;
     }
 
@@ -206,6 +215,8 @@ public class WorkProject implements Parcelable {
 
         dest.writeInt(id);
 
+        dest.writeString(projectName);
+
         dest.writeDouble(hoursWorkedOnProject);
 
         dest.writeDouble(miles);
@@ -216,7 +227,13 @@ public class WorkProject implements Parcelable {
 
     }
 
+    public String getProjectName() {
+        return projectName;
+    }
 
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     public int getId() {
         return id;
@@ -226,43 +243,43 @@ public class WorkProject implements Parcelable {
         this.id = id;
     }
 
-    public void setDisplayCostStr(String filler) {
+    void setDisplayCostStr(String filler) {
         this.displayCostStr = this.displayCost.toString();
     }
 
-    public String getDisplayCostStr() {
+    String getDisplayCostStr() {
         return this.displayCostStr;
     }
 
-    public void setNetProfitStr(String filler) {
+    void setNetProfitStr(String filler) {
         this.netProfitStr = this.netProfit.toString();
     }
 
-    public String getNetProfitStr() {
+    String getNetProfitStr() {
         return this.netProfitStr;
     }
 
-    public void setLaborCostStr(String filler) {
+    void setLaborCostStr(String filler) {
         this.laborCostStr = this.laborCost.toString();
     }
 
-    public String getLaborCostStr() {
+    String getLaborCostStr() {
         return this.laborCostStr;
     }
 
-    public void setHoursWorkedOnProjectStr(String filler) {
+    void setHoursWorkedOnProjectStr(String filler) {
         this.hoursWorkedOnProjectStr = String.valueOf(hoursWorkedOnProject);
     }
 
-    public String getHoursWorkedOnProjectStr() {
+    String getHoursWorkedOnProjectStr() {
         return this.hoursWorkedOnProjectStr;
     }
 
-    public void setMilesStr(String filler) {
+    void setMilesStr(String filler) {
         this.milesStr = String.valueOf(miles);
     }
 
-    public String getMilesStr() {
+    String getMilesStr() {
         return this.milesStr;
     }
 
@@ -279,10 +296,10 @@ public class WorkProject implements Parcelable {
         return cost;
     }
 
-    public int getCustomerID() {
+    int getCustomerID() {
         return customerID;
     }
-    public void setCustomerID(int id){
+    void setCustomerID(int id){
         this.customerID = id;
     }
 }
