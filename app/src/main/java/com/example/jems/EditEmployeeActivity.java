@@ -51,6 +51,7 @@ public class EditEmployeeActivity extends AppCompatActivity {
         firstName.setText(e.getFirstName());
         lastName.setText(e.getLastName());
         wage.setText(Double.toString(e.getWage()));
+        startDate.setText(e.getStartDate());
 
         startDate.setOnClickListener(new View.OnClickListener() {
             @Override

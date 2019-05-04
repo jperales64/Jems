@@ -47,17 +47,22 @@ public class TimeClockDetailAdapter extends RecyclerView.Adapter<TimeClockDetail
         String[] dateIn = parseIn.split(" ");
 
         String parseOut = currentRow.getClockOut();
-        String[] dateOut = parseOut.split(" ");
+        if (parseOut == null || parseOut.length() == 0) {
+            holder.clockOut.setText("");
+            holder.hours.setText("");
+        } else {
+            String[] dateOut = parseOut.split(" ");
+            String clockOut = dateOut[1];
+            holder.clockOut.setText(clockOut);
+            String hours = String.format("%.2f", String.valueOf(currentRow.getNumHours()));
+            holder.hours.setText(hours);
+        }
 
         String date = dateIn[0];
         String clockIn = dateIn[1];
-        String clockOut = dateOut[1];
-        String hours = String.valueOf(currentRow.getNumHours());
 
         holder.date.setText(date);
         holder.clockIn.setText(clockIn);
-        holder.clockOut.setText(clockOut);
-        holder.hours.setText(hours);
 
     }
 
